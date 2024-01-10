@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.UpdateLapinPage"
+             BackgroundColor="AliceBlue">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <!-- Titre de la page -->
+                <Label Text="Autres renseignements sur lapins" FontSize="22" FontAttributes="Bold" TextDecorations="Underline" HorizontalOptions="CenterAndExpand" Margin="5,40,5,20"/>
+                <Label Text="Lapin:" Margin="20,0,20,0"/>
+                <Picker ItemsSource="{Binding LapinList}"
+                        Margin="20,0,20,0"
+                SelectedItem="{Binding SelectedLapin}"
+                ItemDisplayBinding="{Binding Code}"/>
+                <Picker ItemsSource="{Binding LapinList}"
+                        Margin="20,0,20,0"
+                SelectedItem="{Binding SelectedLapin}"
+                ItemDisplayBinding="{Binding Categorie}"/>
+                
+                <!-- Formulaire -->
+
+                <Frame Margin="10" Padding="15">
+                    <StackLayout>
+                        <!-- Malade -->
+                        <!--<StackLayout Orientation="Horizontal">
+                            <Label Text="Malade" FontSize="18" Margin="0,9,0,0"
+                                        FontAttributes="Bold"/>
+                            <RadioButton GroupName="Choix" Content="Oui" x:Name="btnOui" IsEnabled="{Binding Malade}" />
+                            <RadioButton GroupName="Choix" Content="Non" x:Name="btnNon" IsEnabled="{Binding Malade}"/>
+                        </StackLayout>-->
+                        
+                        <StackLayout Orientation="Horizontal" Margin="0,5,0,2">
+                            <Label Text="Malade" FontSize="Body" FontAttributes="Bold" Margin="0,17,80,0"/>
+                            <Switch IsToggled="{Binding Malade}"/>
+                        </StackLayout>
+                        <!--<Label Text="Date de vente" FontSize="Body" Margin="0,10,0,0"
+                               FontAttributes="Bold"/>
+                        <DatePicker Format="D" Date="{Binding Vente}"/>-->
+
+                        <!-- Date de décès -->
+                        <StackLayout Orientation="Horizontal" Margin="0,5,0,2">
+                            <Label Text="Décès" FontSize="Body" FontAttributes="Bold" Margin="0,17,90,0"/>
+                            <Switch IsToggled="{Binding Deces}"/>
+                        </StackLayout>
+                        <!--<Label Text="Date de décès" FontSize="Body" Margin="0,10,0,0"
+                               FontAttributes="Bold"/>
+                        <DatePicker Format="D" Date="{Binding Deces}"/>-->
+                    </StackLayout>
+                </Frame>
+                <!-- Bouton d'ajout -->
+                <Button Text="Sauvegarder" FontSize="Large" Margin="40,20,40,20" CornerRadius="20"
+                        Command="{Binding AddUpdateLapinPlusCommand}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+    

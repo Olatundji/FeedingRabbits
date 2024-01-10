@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.AddTypePage">
+    <StackLayout Spacing="20" Padding="20">
+
+        <Label Text="Ajouter un type de lapin" FontSize="Large" HorizontalTextAlignment="Center"/>
+        <Entry 
+               Placeholder="Type de lapin" 
+               Text="{Binding Nom}"
+               x:Name="TypeNom" />
+
+        <Button Text="Ajouter" Command="{Binding AddUpdateLapinTypeCommand}"/>
+
+    </StackLayout>
+</ContentPage>

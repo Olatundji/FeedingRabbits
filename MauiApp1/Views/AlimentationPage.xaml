@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   x:Class="MauiApp1.Views.AlimentationPage"
+                   xmlns:models="clr-namespace:MauiApp1.Models"
+                   xmlns:viewModels="clr-namespace:MauiApp1.ViewModels" Background="aliceblue">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Margin="15,25,15,0">
+            <Frame>
+                <StackLayout>
+                    <Label Text="Sélectionner un lapin :" FontSize="Body"/>
+                    <Picker SelectedItem="{Binding SelectedLapin}"
+                            ItemsSource="{Binding Lapins}"
+                            Title="Identifiant"
+                            ItemDisplayBinding="{Binding Code}" />
+
+                    <Picker SelectedItem="{Binding SelectedLapin}"
+                            ItemsSource="{Binding Lapins}"
+                            Title="Catégorie"
+                            ItemDisplayBinding="{Binding Categorie}" />
+
+                    <Picker SelectedItem="{Binding SelectedLapin}"
+                            ItemsSource="{Binding Lapins}"
+                            Title="Poids"
+                            ItemDisplayBinding="{Binding Poids}" />
+
+                    <Picker SelectedItem="{Binding SelectedLapin}"
+                            ItemsSource="{Binding Lapins}"
+                            Title="Date"
+                            ItemDisplayBinding="{Binding Naissance}" />
+
+                    <Label Text="Sélectionner un aliment :" FontSize="Body"/>
+                    <Picker SelectedItem="{Binding SelectedAliment}"
+                            ItemsSource="{Binding Aliments}"
+                            Title="Sélectionner un aliment"
+                            ItemDisplayBinding="{Binding Nom}" />
+                </StackLayout>
+            </Frame>
+            <Button Text="Calculer la quantité d'alimentation"
+                    CornerRadius="15"
+                    Margin="15,20,15,5"
+                    Command="{Binding CalculerQuantiteAlimentCommand}"/>
+            <StackLayout Orientation="Horizontal"  Margin="5,10,0,0">
+                <Label Text="Quantité recommandée :" FontAttributes="Bold" Margin="10"/>
+                    <Frame Padding="25,10,25,10" Margin="35,0,0,0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding QuantiteAliment}"/>
+                        <HorizontalStackLayout>
+                            <Label Text=" g"/>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"  Margin="5,10,0,0">
+                <Label Text="Quantité d'eau recommandée :" FontAttributes="Bold" Margin="10"/>
+                    <Frame Padding="25,10,25,10" Margin="5,0,0,0">
+                    <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding QuantiteEau}"/>
+                        <HorizontalStackLayout>
+                            <Label Text=" litres"/>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

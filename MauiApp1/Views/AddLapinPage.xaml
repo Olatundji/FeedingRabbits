@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Class="MauiApp1.Views.AddLapinPage"
+             Title="Ajouter un lapin"
+             xmlns:local="clr-namespace:MauiApp1"
+             BackgroundColor="AliceBlue">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <!-- Titre de la page -->
+                <Label Text="Informations relatives aux lapins" FontSize="22" FontAttributes="Bold" TextDecorations="Underline" HorizontalOptions="CenterAndExpand" Margin="5,40,5,20"/>
+
+                <!-- Formulaire -->
+                <Frame Margin="10" Padding="15">
+                    <StackLayout>
+                        <!-- Code -->
+                        <Label Text="Code" FontSize="Body" FontAttributes="Bold"/>
+                        <Entry Text="{Binding LapinDetail.Code}"  Placeholder="Entrez le code du lapin"/>
+
+                        <!-- Code parent -->
+                        <Label Text="Code Parent" FontSize="Body" Margin="0,10,0,0"
+                               FontAttributes="Bold"/>
+                        <Entry Text="{Binding LapinDetail.CodeParent}" Placeholder="Entrez le code parent du lapin"/>
+
+                        <!-- Race -->
+                        <Label Text="Race" FontSize="Body" Margin="0,10,0,0"
+                               FontAttributes="Bold"/>
+                        <Entry Text="{Binding LapinDetail.Race}" Placeholder="Entrez la race du lapin"/>
+
+                        <!-- Poids -->
+                        <Label Text="Poids" FontSize="Body" Margin="0,10,0,0"
+                               FontAttributes="Bold"/>
+                        <Entry Text="{Binding LapinDetail.Poids}" Placeholder="Entrez le poids du lapin"/>
+
+                        <!-- Taille -->
+                        <Label Text="Taille" FontSize="Body" Margin="0,10,0,0"
+                               FontAttributes="Bold"/>
+                        <Entry Text="{Binding LapinDetail.Taille}" Placeholder="Entrez la taille du lapin" FontAttributes="Bold"/>
+
+                        <!-- Sexe -->
+                        <Label Text="Sexe" FontSize="Body" Margin="0,10,0,0"
+                               FontAttributes="Bold"/>
+                        <Picker Title="Sélectionnez le sexe" SelectedItem="{Binding LapinDetail.Sexe}">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Male</x:String>
+                                    <x:String>Femelle</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+
+                        <!-- Date de naissance -->
+                        <Label Text="Date de mise-bas" FontSize="Body" Margin="0,10,0,0" 
+                               FontAttributes="Bold"/>
+                        <DatePicker Format="D" Date="{Binding LapinDetail.Naissance}"/>
+                         <!--Tye de Lapin-->
+                        <Label Text="Catégorie" FontSize="Body" Margin="0,10,0,0"
+                               FontAttributes="Bold"/>
+                        <Picker Title="Sélectionnez la catégorie" SelectedItem="{Binding LapinDetail.Categorie}">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Lapereaux</x:String>
+                                    <x:String>Male reproducteur</x:String>
+                                    <x:String>Femelle reproductrice</x:String>
+                                    <x:String>Femelle gestante</x:String>
+                                    <x:String>Femelle allaitante</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Bouton d'ajout -->
+                <Button Text="Enrégistrer" FontSize="Large" Margin="20"
+                        Command="{Binding AddUpdateLapinCommand}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

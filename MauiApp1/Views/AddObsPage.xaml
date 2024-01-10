@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels;assembly=MauiApp1"
+             x:Class="MauiApp1.Views.AddObsPage"
+             BackgroundColor="AliceBlue">
+
+    <StackLayout Spacing="10" Padding="20">
+
+        <Label Text="Ajouter une observation" FontSize="Large" FontAttributes="Bold" />
+
+        <Label Text="Lapin:"/>
+        <Picker ItemsSource="{Binding LapinList}"
+                SelectedItem="{Binding SelectedLapin}"
+                ItemDisplayBinding="{Binding Code}"/>
+        
+        <Picker ItemsSource="{Binding LapinList}"
+                SelectedItem="{Binding SelectedLapin}"
+                ItemDisplayBinding="{Binding Categorie}"/>
+
+        <Label Text="Date" FontSize="Body" Margin="0,10,0,0" 
+                               FontAttributes="Bold"/>
+        <DatePicker Format="D" Date="{Binding DateAjout}"/>
+        <Label Text="Note:"/>
+        <Editor Text="{Binding Note}" />
+
+        <Button Text="Ajouter"
+                Command="{Binding AddObservationCommand}"/>
+
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.LoginPage"
+             xmlns:local="clr-namespace:MauiApp1"
+             Title="Connexion">
+
+    <VerticalStackLayout 
+            Spacing="25" 
+            Padding="40,30" 
+            VerticalOptions="Center">
+
+        <Image Source="rabbit1.png" HeightRequest="150"  Aspect="AspectFill"/>
+
+        <VerticalStackLayout Spacing="5" Margin="0,-10">
+            <Label Text="Bienvenue!" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center" />
+            <Label Text="Se connecter pour continuer" FontSize="17" TextColor="Gray" HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="user.png" HeightRequest="20" WidthRequest="20" />
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White"  HorizontalOptions="FillAndExpand">
+                <Entry Text="{Binding Identifiant}" Margin="20,0,0,0" VerticalOptions="Center" x:Name="EntryIdentifiant" Placeholder="Identifiant" Keyboard="Email" />
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                <Image Source="lock.png" HeightRequest="20" WidthRequest="20" />
+            </Frame>
+            <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White"  HorizontalOptions="FillAndExpand">
+                <Entry Text="{Binding Password}" Margin="20,0,0,0" VerticalOptions="Center" x:Name="Entrypassword" Placeholder="Mot de Passe" IsPassword="True" />
+            </Frame>
+        </StackLayout>
+
+        <Button 
+            Text="Se connecter" 
+            WidthRequest="130" 
+            CornerRadius="20"
+            HorizontalOptions="Center"
+            Background="#8452cf"
+            Clicked="Button_Clicked"/>
+
+        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center" Padding="0,-10,0,0">
+            <Label Text="Vous n'avez pas de compte?" TextColor="Gray" />
+            <Button Text="Inscrivez-vous👈" TextColor="#8452cf" 
+                    BackgroundColor="Transparent" 
+                    Margin="0,-13,0,0"
+                    Clicked="Label_Tapped"/>
+            <!--<Label Text="Inscrivez-vous" TextColor="#8452cf">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Label_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>-->
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

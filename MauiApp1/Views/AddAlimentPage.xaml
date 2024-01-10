@@ -1,0 +1,35 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.AddAlimentPage"
+             BackgroundColor="AliceBlue">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20,60,20,0">
+                <Frame Padding="20" CornerRadius="10">
+                    <StackLayout>
+                        <Picker Title="Nom de l'aliment" SelectedItem="{Binding AlimentDetail.Nom}" Margin="5,10,5,15" SelectedIndexChanged="Picker_SelectedIndexChanged">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Granulés</x:String>
+                                    <x:String>Autres aliments</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        <StackLayout Orientation="Horizontal" Spacing="60" Margin="0,0,0,20">
+                            <Label Text="Prix" FontSize="18" Margin="10"/>
+                            <HorizontalStackLayout Padding="-5">
+                                <Entry Text="{Binding AlimentDetail.Prix}" 
+                                       BackgroundColor="Transparent" 
+                                       TextColor="Black" HorizontalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                        <Label x:Name="comingSoonLabel" Text="Coming soon" IsVisible="False" FontSize="16" TextColor="Red" HorizontalOptions="Center" Margin="0,0,0,20"/>
+                    </StackLayout>
+                </Frame>
+                <StackLayout Spacing="10" Margin="10,35">
+                    <Button Text="Enregistrer" CornerRadius="17" Command="{Binding AddUpdateAlimentCommand}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

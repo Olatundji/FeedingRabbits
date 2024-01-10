@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels"
+             xmlns:models="clr-namespace:MauiApp1.Models"
+             x:Class="MauiApp1.Views.ListAlimentPage"
+             Title="Liste des aliments"
+             BackgroundColor="AliceBlue">
+    <StackLayout Margin="10,15,5,0">
+        <!--<Label  Text="Liste des aliments" FontSize="28"/>-->
+        <Button Text="Ajouter un aliment" Command="{Binding CreateAlimentCommand}" CornerRadius="17" HorizontalOptions="EndAndExpand" />
+        <RefreshView Command="{Binding GetAlimentListCommand}" 
+                     IsRefreshing="{Binding IsLoading, Mode=OneWay}">
+            <CollectionView ItemsSource="{Binding AlimentList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Aliment">
+                        <Frame Margin="6" Padding="10">
+                            <VerticalStackLayout Spacing="10">
+                                <HorizontalStackLayout >
+
+                                    <Label Text="{Binding Nom}" FontSize="18" FontAttributes="Bold" />
+                                </HorizontalStackLayout>
+
+                                <Label Text="{Binding Prix}" />
+                            </VerticalStackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:ListAlimentViewModel}},Path=DisplayActionCommand}"
+                                                          CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+       
+    </StackLayout>
+</ContentPage>

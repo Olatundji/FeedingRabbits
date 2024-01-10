@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp1.Converters"
+             xmlns:controls="clr-namespace:MauiApp1.Controls;assembly=MauiApp1"
+             x:Class="MauiApp1.Views.HomePage"
+             BackgroundColor="AliceBlue">
+    <ContentPage.Resources>
+        <local:BooleanToStringConverter x:Key="BooleanToStringConverter" />
+        <local:BooleanConverterDeces x:Key="BooleanConverterDeces" />
+    </ContentPage.Resources>
+
+    <Grid Margin="0,10,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <controls:ScrollingTextControl Grid.Row="0" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+
+        <StackLayout Grid.Row="1" HorizontalOptions="CenterAndExpand">
+            <Label Text="Taux de mortalité" FontSize="18" CharacterSpacing="2" />
+            <StackLayout Margin="0,5,0,10" Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                <Label Text="{Binding MortalityRate,StringFormat='{0:F2}'}" FontSize="24" FontAttributes="Bold"/>
+                <Label Text="%" FontSize="24" FontAttributes="Bold"/>
+            </StackLayout>
+        </StackLayout>
+
+        <BoxView Grid.Row="2" HeightRequest="10" CornerRadius="8"/>
+
+        <StackLayout Grid.Row="3" HorizontalOptions="CenterAndExpand">
+            <Label Text="Nombre de lapins malades" FontSize="18" Margin="0,15,0,0" CharacterSpacing="2"/>
+            <Label Text="{Binding MaladeLapinsCount}" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,5,0,10"/>
+        </StackLayout>
+
+        <BoxView Grid.Row="4" HeightRequest="10" CornerRadius="8"/>
+        <Grid Grid.Row="5" Margin="2">
+           <StackLayout Spacing="5" Margin="0,2,0,0" >
+            <!-- Contenu de l'en-tête -->
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="ID" FontAttributes="Bold" FontSize="16" Grid.Column="0" Margin="20,0,39,0"/>
+                <Label Text="Sexe" FontAttributes="Bold" FontSize="16" Margin="0,0,29,0" Grid.Column="1"/>
+                <Label Text="état de santé" FontAttributes="Bold" FontSize="16" LineBreakMode="CharacterWrap" Grid.Column="2" Margin="0,0,15,0"/>
+                <Label Text="En vie / Mort" FontAttributes="Bold" FontSize="16" Grid.Column="3" LineBreakMode="CharacterWrap"/>
+            </Grid>
+        </StackLayout> 
+        </Grid>
+        
+        <ListView Grid.Row="6" ItemsSource="{Binding LapinList}" SeparatorVisibility="Default" Margin="0,10,0,10" SeparatorColor="Black" SelectionMode="None">
+            <!--<ListView.Header HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default" SeparatorColor="Black">
+                
+                    <StackLayout Spacing="2" Margin="0,2,0,0">
+                        --><!-- Contenu de l'en-tête --><!--
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="ID" FontAttributes="Bold" FontSize="16" Grid.Column="0" Margin="25,0,33,0"/>
+                            <Label Text="Sexe" FontAttributes="Bold" FontSize="16" Margin="0,0,33,0" Grid.Column="1"/>
+                            <Label Text="état de santé" FontAttributes="Bold" FontSize="16" LineBreakMode="CharacterWrap" Grid.Column="2" Margin="0,0,15,0"/>
+                            <Label Text="En vie / Mort" FontAttributes="Bold" FontSize="16" Grid.Column="3" LineBreakMode="CharacterWrap"/>
+                        </Grid>
+                    </StackLayout>
+                    
+            </ListView.Header>-->
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="10,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Code}" FontSize="18" WidthRequest="70" Grid.Column="0" />
+                            <Label Text="{Binding Sexe}" FontSize="18" WidthRequest="95" Grid.Column="1" />
+                            <Label Text="{Binding Malade, Converter={StaticResource BooleanToStringConverter}}" FontSize="18" WidthRequest="95" LineBreakMode="WordWrap" Grid.Column="2" />
+                            <Label Text="{Binding Deces, Converter={StaticResource BooleanConverterDeces}}" FontSize="18" WidthRequest="80" Grid.Column="3" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+    <!--<StackLayout Padding="20">
+        <controls:ScrollingTextControl  FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+
+        <StackLayout HorizontalOptions="CenterAndExpand">
+            <Label Text="Taux de mortalité" FontSize="18" CharacterSpacing="2" />
+            <StackLayout Margin="0,5,0,10" Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                <Label Text="{Binding MortalityRate,StringFormat='{0:F2}'}" FontSize="24" FontAttributes="Bold"/>
+                <Label Text="%" FontSize="24" FontAttributes="Bold"/>
+            </StackLayout>
+        </StackLayout>
+
+        <BoxView HeightRequest="10" CornerRadius="8"/>
+
+        <StackLayout HorizontalOptions="CenterAndExpand">
+            <Label Text="Nombre de lapins malades" FontSize="18" Margin="0,15,0,0" CharacterSpacing="2"/>
+            <Label Text="{Binding MaladeLapinsCount}" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,5,0,10"/>
+        </StackLayout>
+
+        <BoxView HeightRequest="10" CornerRadius="8"/>
+        <ListView ItemsSource="{Binding LapinList}" SeparatorVisibility="Default" Margin="0,10,0,10"  SeparatorColor="Black" SelectionMode="None">
+            <ListView.Header>
+                <StackLayout Orientation="Horizontal" Spacing="8" >
+                    <Label Text="ID" FontAttributes="Bold" FontSize="16" Margin="15,0,25,0"/>
+                    <Label Text="Sexe" FontAttributes="Bold" FontSize="16" Margin="0,0,17,0"/>
+                    <Label Text="état de santé" FontAttributes="Bold" FontSize="16" LineBreakMode="CharacterWrap"/>
+                    <Label Text="En vie / Mort" FontAttributes="Bold" FontSize="16"/>
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" HeightRequest="25" Padding="0,0,2,-20">
+                            <Label Text="{Binding Code}" FontSize="18" WidthRequest="58" />
+                            <Label Text="{Binding Sexe}" FontSize="18" WidthRequest="74" />
+                            <Label Text="{Binding Malade, Converter={StaticResource BooleanToStringConverter}}" FontSize="18" WidthRequest="85" LineBreakMode="WordWrap" />
+                            <Label Text="{Binding Deces, Converter={StaticResource BooleanConverterDeces}}" FontSize="18" WidthRequest="80" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>-->
+</ContentPage>

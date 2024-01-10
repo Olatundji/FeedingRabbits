@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels"
+             x:Class="MauiApp1.Views.ListObsPage"
+             BackgroundColor="AliceBlue">
+
+    <RefreshView Command="{Binding GetObservationListCommand}" 
+             IsRefreshing="{Binding IsLoading, Mode=OneWay}">
+        <CollectionView x:Name="notesCollection"
+                    ItemsSource="{Binding ObservationList}"
+                    Margin="20"
+                    SelectionMode="None">
+            <!-- Designate how the collection of items are laid out -->
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+
+            <!-- Define the appearance of each item in the list -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete" IconImageSource="delete_user" 
+                                           CommandParameter="{Binding .}"
+                                           Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:ListObservationViewModel}},Path=RemoveObservationCommand}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <StackLayout Margin="18,9">
+                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding DateAjout}" FontAttributes="Italic" FontSize="14" TextColor="#666666"/>
+                            <Label Text="{Binding SelectedLapin}" FontAttributes="Bold" FontSize="16"/>
+                            <Label Text="{Binding Note}" FontSize="16" LineBreakMode="WordWrap" TextType="Text"/>
+                        </StackLayout>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <!--<CollectionView ItemsSource="{Binding ObservationList}"
+                    x:Name="ObservationsListView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" BackgroundColor="#FFFFFF" Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                            <Label Text="{Binding LapinList}" FontAttributes="Bold" FontSize="16"/>
+                            <BoxView WidthRequest="5"/>
+                            <Label Text="{Binding Note}" FontSize="16"/>
+                        </StackLayout>
+                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding DateAjout}" FontAttributes="Italic" FontSize="14" TextColor="#666666"/>
+                        <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center">
+                            <Image Source="dashboard.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit" Margin="5"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Center">
+                            <Image Source="dashboard.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit" Margin="5"/>
+                        </StackLayout>
+                        <BoxView Grid.Row="2" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="#CCCCCC"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.EmptyView>
+                <StackLayout Padding="20">
+                    <Label Text="Aucune donnée à afficher" HorizontalOptions="Center" FontSize="16" FontAttributes="Italic" TextColor="#666666"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.Footer>
+                <StackLayout Padding="10" BackgroundColor="#F2F2F2">
+                    <Label Text="{Binding Items.Count, StringFormat='Il y a {0} éléments'}" HorizontalOptions="Center" FontSize="14"/>
+                </StackLayout>
+            </CollectionView.Footer>
+        </CollectionView>-->
+    </RefreshView>
+</ContentPage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.AboutPage">
+    <VerticalStackLayout Margin="{OnPlatform Default='20,20'}">
+        <VerticalStackLayout Padding="10">
+            <Label 
+                Text="Bienvenue sur Feeding Rabbits"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label 
+                Text="Feeding Rabbits est une application de gestion de l'alimentation des lapins. Elle vous permet d'optimiser l'alimentation et la reproduction des lapins en calculant la ration alimentaire adéquate à chaque type de lapin, selon leurs stades physiologiques et de suivre l'état de santé de chaque lapin." 
+                FontSize="Body"
+                TextType="Text"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                LineBreakMode="CharacterWrap"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

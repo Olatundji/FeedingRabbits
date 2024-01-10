@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.ListLapinPage"
+             xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels"
+             xmlns:models="clr-namespace:MauiApp1.Models"
+             Title="Liste des lapins"
+             BackgroundColor="AliceBlue">
+
+    <StackLayout Margin="10,15,5,0">
+        <Button Text="Ajouter un lapin" Command="{Binding CreateLapinCommand}" CornerRadius="17" HorizontalOptions="EndAndExpand" />
+
+        <RefreshView Command="{Binding GetLapinListCommand}" 
+                     IsRefreshing="{Binding IsLoading, Mode=OneWay}">
+            
+            <CollectionView ItemsSource="{Binding LapinList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Lapin">
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Edit" IconImageSource="edit1.png" BackgroundColor="LightBlue" 
+                                           Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:ListLapinViewModel}},Path=EditLapinCommand}" 
+                                           CommandParameter="{Binding .}"/>
+                               
+                                    </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <Frame Margin="10" Padding="10">
+                                <VerticalStackLayout>
+                                    <HorizontalStackLayout Spacing="10">
+
+                                        <Label Text="{Binding Code}" FontSize="18" FontAttributes="Bold" />
+
+                                    </HorizontalStackLayout>
+                                    <Label Text="{Binding Race}"/>
+                                    <Label Text="{Binding Poids}" />
+                                    <Label Text="{Binding Sexe}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </SwipeView>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+       
+    </StackLayout>
+
+
+    <!--<StackLayout Margin="15">
+        <RefreshView x:DataType="viewmodels:ListLapinViewModel">
+                     
+                     --><!--IsRefreshing="{Binding IsBusy}-->
+            <!--Command="{Binding LoadLapinCommand}"--><!--
+            <CollectionView ItemsSource="{Binding LapinList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="10" Padding="10">
+                            <StackLayout >
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem Text="Delete" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ListLapinViewModel}},
+                                                Path=LapinTappedDeleteCommand}" CommandParameter="{Binding .}" BackgroundColor="#DF5252"/>
+                                            <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="{Binding Code}" FontSize="10" FontAttributes="Bold"/>
+                                        <Label Text="{Binding CodeParent}" FontSize="10" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Sexe}" FontSize="10" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Naissance}" FontSize="10" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Poids}" FontSize="10" FontAttributes="Bold"/>
+                                    </HorizontalStackLayout>
+                                </SwipeView>
+                                
+                            </StackLayout>
+
+                            --><!--<Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:ListLapinViewModel}},Path=}"
+                                                      CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>--><!--
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Label  Text="Employees List" FontSize="30"/>
+        <Button Text="Ajouter un Lapin" Command="{Binding AddUpdateLapinCommand}" HorizontalOptions="EndAndExpand"/>
+
+       
+
+    </StackLayout>-->
+</ContentPage>

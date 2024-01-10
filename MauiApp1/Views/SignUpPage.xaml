@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.SignUpPage"
+             Title="Inscription"
+            >
+    <ScrollView>
+        <StackLayout Spacing="5"
+                 Margin="10,80,10,0">
+        <VerticalStackLayout
+            HorizontalOptions="Center"
+            Margin="0,10,0,0">
+            <Label
+                Text="Créer un compte"
+                FontSize="34"
+                FontAttributes="Bold"
+                FontFamily="OpenSansSemibold"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Frame Margin="0,30,0,0"
+                   Padding="0,30,0,30"
+                   CornerRadius="15"
+                   BorderColor="Gray">
+                <VerticalStackLayout>
+                    <Entry 
+                        Text="{Binding Nom}"
+                        Placeholder="Nom"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        Margin="10,0"/>
+                    <Entry 
+                        Text="{Binding Prenom}"
+                        Placeholder="Prenom"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        Margin="10,0"/>
+                    <Entry 
+                        Text="{Binding Login}"
+                        Placeholder="Identifiant"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        Margin="10,0"/>
+                    <Entry 
+                        Text="{Binding Email}"
+                        Placeholder="Email"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        Margin="10,0"/>
+                    <Entry 
+                        Text="{Binding Password}"
+                        Placeholder="Mot de passe"
+                        IsPassword="True"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        Margin="10,0"/>
+                    <Entry 
+                        Text="{Binding ConfirmPassword}"
+                        Placeholder="Confirmation de mot de passe"
+                        IsPassword="True"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        Margin="10,0"/>
+                </VerticalStackLayout>
+            </Frame>
+            <VerticalStackLayout 
+                    Margin="0,40,0,30">
+                <Button
+                    CornerRadius="20"
+                    Text="S'inscrire"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Command="{Binding AddUpdateUserCommand}"
+                    BackgroundColor="#8452cf"/>
+            </VerticalStackLayout>
+            <StackLayout Orientation="Horizontal"
+                         Margin="0,0,0,20"
+                         Spacing="2">
+                <Label
+                    FontSize="17"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    Text="Vous avez déjà un compte ?"/>
+                    <Button Text="Se connecter" FontSize="16"
+                            Margin="0,-11,0,0"
+                           FontAttributes="Bold"
+                           TextColor="#8452cf"
+                            BackgroundColor="Transparent"
+                            Command="{Binding SeconnecterCommand}"/>
+            </StackLayout>
+        </VerticalStackLayout>
+    </StackLayout>
+    </ScrollView>
+    
+</ContentPage>

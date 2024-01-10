@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiApp1.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiApp1"
+    xmlns:view="clr-namespace:MauiApp1.Views"
+    FlyoutHeaderBehavior="CollapseOnScroll"
+    FlyoutBackgroundColor="AliceBlue"
+    FlyoutVerticalScrollMode="Auto">
+
+    <!--FlyoutItemIsVisible="False"-->
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid HeightRequest="200">
+                <Image Aspect="AspectFill" 
+                       Source="rabbit1.png"
+                       Opacity="1"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+    <ShellContent Title="Connexion"
+                  Shell.FlyoutBehavior="Disabled"
+                  Shell.FlyoutItemIsVisible="False"
+                  Route="LoadingPage"
+                      ContentTemplate="{DataTemplate view:LoadingPage}"/>
+    <ShellContent Title="Connexion"
+                  Shell.FlyoutBehavior="Disabled"
+                  Shell.FlyoutItemIsVisible="False"
+                  Route="LoginPage"
+                      ContentTemplate="{DataTemplate view:LoginPage}"/>
+     <ShellContent Title="Inscription"
+                   Shell.FlyoutBehavior="Disabled"
+                   Shell.FlyoutItemIsVisible="False"
+                   Route="SignUpPage"
+                      ContentTemplate="{DataTemplate view:SignUpPage}"/>
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Accueil"
+             Icon="home.png">
+            <ShellContent Title="Accueil"
+                      Icon="home.png"
+                       Route="HomePage"
+                       ContentTemplate="{DataTemplate view:HomePage}"/>
+        </Tab>
+        <ShellContent Title="Alimentation"
+                      Icon="dashboard.png"
+                      Route="AlimentationPage"
+                      ContentTemplate="{DataTemplate view:AlimentationPage}"/>
+    </FlyoutItem>
+    <!--<ShellContent Title="Utilisateur"
+                      Icon="list_user.png"
+                      Route="ListUtilisateurPage"
+                      ContentTemplate="{DataTemplate view:ListUtilisateurPage}"/>-->
+    <ShellContent Title="Ajouter un lapin"
+                          Icon="ajouter1.png"
+                          Route="AddLapinPage"
+                          ContentTemplate="{DataTemplate view:AddLapinPage}"/>
+    <ShellContent Title="Liste des lapins"
+                          Icon="liste.png"
+                          Route="ListLapinPage"
+                          ContentTemplate="{DataTemplate view:ListLapinPage}"/>
+    <ShellContent Title="Plus sur les lapins" 
+                          Icon="ajouter1.png"
+                          Route="UpdateLapinPage"
+                          ContentTemplate="{DataTemplate view:UpdateLapinPage}"/>
+        
+    <ShellContent Title="Ajouter un aliment"
+                    Icon="ajouter1.png"
+                    Route="AddAlimentPage"
+                    ContentTemplate="{DataTemplate view:AddAlimentPage}"/>
+    <ShellContent Title="Liste des aliments"
+                    Icon="liste.png"
+                    Route="ListAlimentPage"
+                    ContentTemplate="{DataTemplate view:ListAlimentPage}"/>
+        
+    <ShellContent Title="Ajouter une observation"
+                    Icon="ajouter1.png"
+                    Route="AddObsPage"
+                    ContentTemplate="{DataTemplate view:AddObsPage}"/>
+    <ShellContent Title="Liste des observations"
+                    Icon="liste.png"
+                    Route="ListObsPage"
+                    ContentTemplate="{DataTemplate view:ListObsPage}"/>
+
+    <!--<ShellContent Title="Type de lapin"
+                    Icon="ajouter1.png"
+                    Route="AddTypePage"
+                    ContentTemplate="{DataTemplate view:AddTypePage}"/>
+    <ShellContent Title="Liste "
+                    Icon="liste.png"
+                    Route="ListTypePage"
+                    ContentTemplate="{DataTemplate view:ListTypePage}"/>-->
+    <ShellContent Title="Renseigner une vente"
+                    Icon="ajouter1.png"
+                    Route="VentePage"
+                    ContentTemplate="{DataTemplate view:VentePage}"/>
+    <ShellContent Title="Historique de la vente"
+                    Icon="liste.png"
+                    Route="ListVentePage"
+                    ContentTemplate="{DataTemplate view:ListVentePage}"/>
+    <ShellContent Title="À-propos"
+                      Icon="icon_about.png"
+                      Route="AboutPage"
+                      ContentTemplate="{DataTemplate view:AboutPage}"/>
+
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <Grid RowDefinitions="*,*"
+                  Background="LightGray"
+                  HeightRequest="100">
+                <Grid Background=" AliceBlue">
+                    <Button Text="Se déconnecter"
+                            Clicked="OnLogoutClicked"
+                            BackgroundColor="#8452cf"
+                            Margin="10,0,10,0"
+                            CornerRadius="22"/>
+                </Grid>
+                <Grid Grid.Row="1"
+                      BackgroundColor="AliceBlue">
+                    <Label Text="Copyright © 2023 Feeding Rabbits|VALLEE BENIN"
+                           Margin="2,0,2,0"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+</Shell>

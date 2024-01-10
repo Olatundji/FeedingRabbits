@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels;assembly=MauiApp1"
+             x:Class="MauiApp1.Views.VentePage"
+             BackgroundColor="AliceBlue">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20,60,20,0">
+                <Frame Padding="20" CornerRadius="10">
+                    <StackLayout>
+                        <Label Text="Sélectionner un lapin"/>
+                        <StackLayout Spacing="15" Orientation="Horizontal" Margin="0,5,0,10">
+                            <Picker ItemsSource="{Binding LapinList}"
+                                    Title="Identifiant"
+                                    SelectedItem="{Binding SelectedLapin}"
+                                    ItemDisplayBinding="{Binding Code}"/>
+
+                            <Picker ItemsSource="{Binding LapinList}"
+                                    Title="Catégorie"
+                                    SelectedItem="{Binding SelectedLapin}"
+                                    ItemDisplayBinding="{Binding Categorie}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="50" Margin="60,20,0,20">
+
+                            <Label Text="Date" FontSize="Body" Margin="0,10,0,0" 
+                                   FontAttributes="Bold"/>
+                            <HorizontalStackLayout>
+                            <DatePicker Format="D" Date="{Binding DateVente}"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal"  Spacing="80" Margin="49,20,0,20">
+                            <Label Text="Prix" FontSize="18" Margin="10"/>
+                            <HorizontalStackLayout Padding="-5">
+                                <Entry Text="{Binding Prix}" 
+                                           BackgroundColor="Transparent" 
+                                           TextColor="Black" HorizontalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <StackLayout Spacing="10" Margin="10,35">
+                    <Button Text="Ajouter" CornerRadius="17" Command="{Binding AddVenteCommand}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+    <!--<StackLayout Spacing="10" Padding="20">
+
+        <Label Text="Ajouter une observation" FontSize="Large" FontAttributes="Bold" />
+
+        <Label Text="Lapin:"/>
+        <Picker ItemsSource="{Binding LapinList}"
+                SelectedItem="{Binding SelectedLapin}"
+                ItemDisplayBinding="{Binding Code}"/>
+
+        <Picker ItemsSource="{Binding LapinList}"
+                SelectedItem="{Binding SelectedLapin}"
+                ItemDisplayBinding="{Binding Categorie}"/>
+
+        <Label Text="Date" FontSize="Body" Margin="0,10,0,0" 
+                               FontAttributes="Bold"/>
+        <DatePicker Format="D" Date="{Binding DateVente}"/>
+        <Label Text="Note:"/>
+        <Entry Text="{Binding Prix}" />
+
+        <Button Text="Ajouter"
+                Command="{Binding AddObservationCommand}"/>
+
+    </StackLayout>-->
+</ContentPage>
